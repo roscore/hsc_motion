@@ -1,0 +1,19 @@
+link: 
+  [ 
+  l_shoulder_pitch,   #1
+  r_shoulder_pitch,   #2
+  l_shoulder_roll,    #3
+  r_shoulder_roll,    #4
+  l_elbow_pitch,      #5
+  r_elbow_pitch       #6
+  ]
+  
+motion: 
+  1: [ 30, -30, 30, -30, -45, 45 ] 
+  2: [ 30, -30, 10, -10, -45, 45 ]
+
+motion_time:
+  [
+  2,   # base 2 motion1
+  2
+  ] 

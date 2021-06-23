@@ -1,0 +1,58 @@
+<?xml version="1.0" ?>
+
+<launch>
+
+    <!-- Check USER ID -->
+    <arg name="alice_uid" value="$(optenv ALICE_NUM 0)"  />
+    <!--arg name="alice_uid" value="0" /-->
+
+    <param name="alice_userid"             	 value="$(arg alice_uid)"/>
+
+    <!-- GAZEBO Robot Setting -->
+
+    <param name="/gazebo/enable_ros_network"     value="false"      type="bool"/>
+    
+    <arg name="robot_name" 	value="alice_1_robot" if="$(eval arg('alice_uid') == 1)"/>
+    <arg name="robot_name" 	value="alice_2_robot" if="$(eval arg('alice_uid') == 2)"/>
+    <arg name="robot_name" 	value="alice_3_robot" if="$(eval arg('alice_uid') == 3)"/>
+    
+
+    <param name="gazebo_robot_name"        	 value="$(arg robot_name)" />
+
+    <!-- YAML FILE LOAD -->
+    <param name="offset_file_path"           value="$(find alice_manager)/config/offset_$(arg alice_uid).yaml"/>
+    <param name="robot_file_path"            value="$(find alice_manager)/config/alice_$(arg alice_uid).robot"/>
+    <param name="init_file_path"             value="$(find alice_manager)/config/dxl_init_$(arg alice_uid).yaml"/>
+
+    <param name="balance_param_path"         value="$(find alice_foot_step_planner)/data/balance_param$(arg alice_uid).yaml"/>
+    <param name="joint_feedback_path"        value="$(find alice_foot_step_planner)/data/joint_feedback_gain$(arg alice_uid).yaml"/>
+
+    <!-- alice Manager -->
+    <node name="alice_manager_node" pkg="alice_manager" type="alice_manager_node" output="screen"/>
+
+    <!-- Robot Model & TF -->
+    
+    <arg name="robot_tf_file"             		 value="alice_$(arg alice_uid)_description"/>
+    <include file="$(eval find(arg('robot_tf_file'))+'/launch/alice_soccer_motion.launch')"/>
+
+
+    <!-- sensors -->
+    <!--
+    <node name="ft_node" pkg="alice_ft_sensors" type="ft_node"/>
+    <include file="$(find microstrain_3dm_gx5_45)/launch/microstrain.launch"/> 
+    -->
+    
+    <!-- algorithm -->
+    <!--
+    <node name="alice_foot_step_planner" pkg="alice_foot_step_planner" type="alice_foot_step_planner" output="screen"/>
+    <node name="alice_foot_step_generator" pkg="alice_foot_step_generator" type="alice_foot_step_generator" output="screen"/>
+    -->
+
+    <!-- alice gui-->
+    <!--include file="$(find alice_gui_test)/launch/alice_gui_test.launch"/-->
+    <!--include file="$(find alice_1_gazebo)/launch/alice_1_gazebo.launch"/-->
+
+    <!-- alice_action_script_player -->
+    <node name="alice_action_script_player" pkg="alice_action_script_player" type="alice_action_script_player" output="screen"/>
+    
+</launch>

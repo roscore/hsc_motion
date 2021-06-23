@@ -1,0 +1,56 @@
+# for base module [deg]
+base :
+  move_time: 4.0
+  target_pose:
+    l_shoulder_pitch: 30.0                        #1
+    r_shoulder_pitch: -30.0                       #2
+    l_shoulder_roll: 10.0                         #3
+    r_shoulder_roll: -10.0                        #4
+    l_elbow_pitch: -45.0                          #5
+    r_elbow_pitch: 45.0                           #6     
+    head_pitch:  20.0                             #7
+    head_yaw:  0.0                                #8
+    #waist_yaw:  0.0                              #9
+    #waist_pitch:  0.0                            #10
+    l_hip_pitch:  30.385970774822734342           #11
+    r_hip_pitch: -30.385970774822734342           #12
+    l_hip_roll:  1.0231933036886888821            #13
+    r_hip_roll:  -1.0231933036886888821           #14
+    l_hip_yaw: -0.59991340868386944241            #15
+    r_hip_yaw:  0.59991340868386944241            #16
+    l_knee_pitch:  -60.761227858184042816         #17
+    r_knee_pitch: 60.761227858184042816           #18
+    l_ankle_pitch:  30.380613929092028513         #19
+    r_ankle_pitch:  -30.380613929092028513        #20
+    l_ankle_roll: -1.1860785704202314594          #21
+    r_ankle_roll: 1.1860785704202314594           #22
+
+
+
+# for offset module [deg]
+zero: 
+  move_time: 4.0
+  target_pose:
+    l_shoulder_pitch: 0.0       #1
+    r_shoulder_pitch: 0.0       #2
+    l_shoulder_roll: 0.0        #3
+    r_shoulder_roll: 0.0        #4
+    l_elbow_pitch: 0.0          #5
+    r_elbow_pitch: 0.0          #6     
+    head_pitch:  0.0            #7
+    head_yaw:  0.0              #8
+    #waist_yaw:  0.0            #9
+    #waist_pitch:  0.0          #10
+    l_hip_pitch:  0.0           #11
+    r_hip_pitch:  0.0           #12
+    l_hip_roll:  0.0            #13
+    r_hip_roll:  0.0            #14
+    l_hip_yaw: 0.0              #15
+    r_hip_yaw:  0.0             #16
+    l_knee_pitch:  0.0          #17
+    r_knee_pitch: 0.0           #18
+    l_ankle_pitch: 0.0          #19
+    r_ankle_pitch:  0.0         #20
+    l_ankle_roll: 0.0           #21
+    r_ankle_roll:  0.0          #22
+

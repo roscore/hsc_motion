@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<launch>    
+  <param name="gazebo"                   value="true"    type="bool"/>
+  <param name="gazebo_robot_name"        value="alice_robot"/>
+  
+  <param name="offset_table"             value="$(find alice_manager)/config/offset.yaml"/>
+  <param name="robot_file_path"          value="$(find alice_manager)/config/alice.robot"/>
+  <param name ="action_file_path"        value="$(find alice_action_module)/data/alice_motion_4095.bin"/>
+    
+  <!-- Action Editor -->
+  <node pkg="alice_action_editor" type="alice_action_editor" name="alice_action_editor" output="screen"/>
+    
+  <!-- sound player -->
+  <node pkg="ros_mpg321_player" type="ros_mpg321_player" name="ros_mpg321_player" output="screen"/>
+</launch>

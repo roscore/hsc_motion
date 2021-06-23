@@ -1,0 +1,34 @@
+<?xml version="1.0" ?>
+<launch>    
+  <!-- Check USER ID -->
+    <arg name="alice_uid" value="$(optenv ALICE_NUM 0)"  />
+    <!--arg name="alice_uid" value="0" /-->
+
+    <param name="alice_userid"             	 value="$(arg alice_uid)"/>
+
+    <!-- GAZEBO Robot Setting -->
+
+    <param name="/gazebo/enable_ros_network"     value="false"      type="bool"/>
+    
+    <arg name="robot_name" 	value="alice_1_robot" if="$(eval arg('alice_uid') == 1)"/>
+    <arg name="robot_name" 	value="alice_2_robot" if="$(eval arg('alice_uid') == 2)"/>
+    <arg name="robot_name" 	value="alice_3_robot" if="$(eval arg('alice_uid') == 3)"/>
+    
+    <param name="gazebo_robot_name"        	 value="$(arg robot_name)" />
+
+    <!-- YAML FILE LOAD -->
+    <param name="offset_file_path"           value="$(find alice_manager)/config/offset_$(arg alice_uid).yaml"/>
+    <param name="robot_file_path"            value="$(find alice_manager)/config/alice_$(arg alice_uid).robot"/>
+    <param name="init_file_path"             value="$(find alice_manager)/config/dxl_init_$(arg alice_uid).yaml"/>
+
+    <param name="balance_param_path"         value="$(find alice_foot_step_planner)/data/balance_param$(arg alice_uid).yaml"/>
+    <param name="joint_feedback_path"        value="$(find alice_foot_step_planner)/data/joint_feedback_gain$(arg alice_uid).yaml"/>
+
+   <param name ="action_file_path"        value="$(find alice_action_module)/data/alice_motion_4095_$(arg alice_uid).bin"/>
+    
+  <!-- Action Editor -->
+    <node pkg="alice_action_editor" type="alice_action_editor" name="alice_action_editor" output="screen"/>
+    
+  <!-- sound player -->
+    <node pkg="ros_mpg321_player" type="ros_mpg321_player" name="ros_mpg321_player" output="screen"/>
+</launch>

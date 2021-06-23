@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>alice_action_editor</name>
+  <version>0.0.0</version>
+  <description>The alice_action_editor package</description>
+
+  <maintainer email="jay@todo.todo">jay</maintainer>
+
+  <license>TODO</license>
+
+  <buildtool_depend>catkin</buildtool_depend>  
+  <depend>roscpp</depend>
+  <depend>std_msgs</depend>
+  <depend>dynamixel_sdk</depend>
+  <depend>robotis_controller</depend>
+  <depend>robotis_device</depend>
+  <depend>alice_action_module</depend>
+  <depend>libncurses-dev</depend>
+  <depend>yaml-cpp</depend>
+  <exec_depend>op3_manager</exec_depend>
+  <exec_depend>ros_mpg321_player</exec_depend>
+
+</package>

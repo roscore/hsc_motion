@@ -1,0 +1,6 @@
+# combination right and left
+upper_body: 
+#right_id : left_id
+  2 : 1
+  4 : 3
+  6 : 5

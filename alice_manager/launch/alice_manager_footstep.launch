@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+
+<launch>
+
+    <!-- Check USER ID -->
+    <arg name="alice_uid" value="$(optenv ALICE_NUM 0)"  />
+    <!--arg name="alice_uid" value="0" /-->
+    <param name="alice_userid"             	 value="$(arg alice_uid)"/>
+
+
+    <param name="balance_param_path"         value="$(find alice_foot_step_planner)/data/balance_param$(arg alice_uid).yaml"/>
+    <param name="joint_feedback_path"        value="$(find alice_foot_step_planner)/data/joint_feedback_gain$(arg alice_uid).yaml"/>
+
+    <!-- algorithm -->
+    <node name="alice_foot_step_planner" pkg="alice_foot_step_planner" type="alice_foot_step_planner" output="screen"/>
+    <node name="alice_foot_step_generator" pkg="alice_foot_step_generator" type="alice_foot_step_generator" output="screen"/>
+    
+    
+</launch>
